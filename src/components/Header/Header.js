@@ -91,7 +91,7 @@ const MobileActions = styled.div`
   @media ${(p) => p.theme.queries.tabletAndSmaller} {
     display: flex;
     gap: clamp(1rem, 6vw - 1rem, 2rem);
-    margin-left: clamp(1rem, 14vw - 2rem, 2.5rem);
+    margin-left: 1rem;
   }
 `;
 
