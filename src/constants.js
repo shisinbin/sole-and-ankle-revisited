@@ -16,3 +16,27 @@ export const WEIGHTS = {
   medium: 600,
   bold: 800,
 };
+
+const BREAKPOINTS = {
+  // Mobile-first
+  // tabletMin: 600,
+  // laptopMin: 950,
+  // desktopMin: 1300,
+
+  // Desktop-first
+  laptopMax: 1300, // 81.25 rem
+  tabletMax: 950, // 59.375 rem
+  mobileMax: 600, // 37.5 rem
+};
+
+export const QUERIES = {
+  // Mobile-first
+  // tabletAndUp: `(min-width: ${BREAKPOINTS.tabletMin / 16}rem)`,
+  // laptopAndUp: `(min-width: ${BREAKPOINTS.laptopMin / 16}rem)`,
+  // desktopAndUp: `(min-width: ${BREAKPOINTS.desktopMin / 16}rem)`,
+
+  // Desktop first
+  laptopAndSmaller: `(max-width: ${BREAKPOINTS.laptopMax / 16}rem)`,
+  tabletAndSmaller: `(max-width: ${BREAKPOINTS.tabletMax / 16}rem)`,
+  mobileAndSmaller: `(max-width: ${BREAKPOINTS.mobileMax / 16}rem)`,
+};
