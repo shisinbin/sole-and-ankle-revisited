@@ -9,8 +9,6 @@ import { QUERIES } from '../../constants';
 const App = () => {
   const [sortId, setSortId] = React.useState('newest');
 
-  console.log(QUERIES);
-
   return (
     <ThemeProvider theme={{ queries: QUERIES }}>
       <Header />

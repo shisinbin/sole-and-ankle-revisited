@@ -41,7 +41,7 @@ const Header = () => {
             <Icon id='search' strokeWidth={2} />
             <VisuallyHidden>Search</VisuallyHidden>
           </UnstyledButton>
-          <UnstyledButton>
+          <UnstyledButton onClick={() => setShowMobileMenu(true)}>
             <Icon id='menu' strokeWidth={2} />
             <VisuallyHidden>Menu</VisuallyHidden>
           </UnstyledButton>
