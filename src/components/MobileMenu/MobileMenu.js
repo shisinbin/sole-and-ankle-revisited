@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import styled from 'styled-components/macro';
+import styled, { keyframes } from 'styled-components/macro';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import { Dialog } from '@headlessui/react';
 
@@ -62,6 +62,18 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   );
 };
 
+const slideIn = keyframes`
+  from {
+    transform: translateX(100%);
+  }
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+`;
+
 const HamburgerWrapper = styled(Dialog)`
   position: fixed;
   inset: 0;
@@ -70,7 +82,10 @@ const HamburgerWrapper = styled(Dialog)`
 const Backdrop = styled.div`
   position: absolute;
   inset: 0;
-  background: hsla(220, 5%, 40%, 0.8);
+  background: hsl(220 5% 40% / 0.8);
+  /* backdrop-filter: blur(3px); */
+
+  animation: ${fadeIn} 850ms cubic-bezier(0.14, 0.78, 0.36, 1);
 `;
 
 const HamburgerMenu = styled(Dialog.Panel)`
@@ -83,6 +98,8 @@ const HamburgerMenu = styled(Dialog.Panel)`
   padding: 32px 16px 32px 32px;
   display: flex;
   flex-direction: column;
+
+  animation: ${slideIn} 500ms cubic-bezier(0.14, 0.78, 0.36, 1);
 `;
 
 const CloseButtonWrapper = styled.div`
