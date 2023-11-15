@@ -61,8 +61,8 @@ const MainHeader = styled.div`
   display: flex;
   align-items: baseline;
   padding: 18px 32px;
-  height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+  overflow-x: auto;
 
   @media ${(p) => p.theme.queries.tabletAndSmaller} {
     border-top: 4px solid ${COLORS.gray[900]};
@@ -77,7 +77,7 @@ const MainHeader = styled.div`
 
 const DesktopNav = styled.nav`
   display: flex;
-  gap: 48px;
+  gap: clamp(1rem, 9vw - 4.5rem, 3.5rem);
   margin: 0px 48px;
 
   @media ${(p) => p.theme.queries.tabletAndSmaller} {
@@ -90,7 +90,7 @@ const MobileActions = styled.div`
 
   @media ${(p) => p.theme.queries.tabletAndSmaller} {
     display: flex;
-    gap: clamp(1rem, 6vw - 1rem, 2rem);
+    gap: clamp(1rem, 8vw - 3.5rem, 3rem);
     margin-left: 1rem;
   }
 `;
@@ -98,16 +98,9 @@ const MobileActions = styled.div`
 const Side = styled.div`
   flex: 1;
 
-  @media ${(p) => p.theme.queries.laptopAndSmaller} {
+  @media ${(p) => p.theme.queries.tabletAndSmaller} {
     flex: revert;
-    margin-right: auto;
   }
-
-  /* &:last-of-type {
-    @media ${(p) => p.theme.queries.tabletAndSmaller} {
-      display: none;
-    }
-  } */
 `;
 
 const Filler = styled(Side)`

@@ -10,9 +10,9 @@ import VisuallyHidden from '../VisuallyHidden';
 import { COLORS, WEIGHTS } from '../../constants';
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
-  if (!isOpen) {
-    return null;
-  }
+  // if (!isOpen) {
+  //   return null;
+  // }
 
   return (
     // <div>
@@ -35,12 +35,12 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
     <HamburgerWrapper open={isOpen} onClose={onDismiss}>
       <Backdrop />
       <HamburgerMenu>
-        <CloseButtonWrapper>
-          <CloseButton onClick={onDismiss}>
-            <Icon id='close' strokeWidth={2} />
-            <VisuallyHidden>Dismiss Menu</VisuallyHidden>
-          </CloseButton>
-        </CloseButtonWrapper>
+        <CloseButton onClick={onDismiss}>
+          <Icon id='close' strokeWidth={2} />
+          <VisuallyHidden>Dismiss Menu</VisuallyHidden>
+        </CloseButton>
+
+        <Filler />
         <Dialog.Title>
           <VisuallyHidden>Navigation Menu</VisuallyHidden>
         </Dialog.Title>
@@ -95,25 +95,28 @@ const HamburgerMenu = styled(Dialog.Panel)`
   right: 0;
   bottom: 0;
   width: 300px;
-  padding: 32px 16px 32px 32px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
 
   animation: ${slideIn} 500ms cubic-bezier(0.14, 0.78, 0.36, 1);
 `;
 
-const CloseButtonWrapper = styled.div`
-  flex: 1;
+const CloseButton = styled(UnstyledButton)`
+  position: absolute;
+  top: 10px;
+  right: 0;
+  padding: 16px;
 `;
 
-const CloseButton = styled(UnstyledButton)`
-  margin-left: auto;
+const Filler = styled.div`
+  flex: 1;
 `;
 
 const MobileNav = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 16px;
 `;
 
 const NavLink = styled.a`
