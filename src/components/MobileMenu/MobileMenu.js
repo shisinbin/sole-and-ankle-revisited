@@ -7,7 +7,7 @@ import { Dialog } from '@headlessui/react';
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
-import { COLORS, WEIGHTS } from '../../constants';
+import { WEIGHTS } from '../../constants';
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   // if (!isOpen) {
@@ -82,7 +82,7 @@ const HamburgerWrapper = styled(Dialog)`
 const Backdrop = styled.div`
   position: absolute;
   inset: 0;
-  background: hsl(220 5% 40% / 0.8);
+  background: var(--color-backdrop);
   /* backdrop-filter: blur(3px); */
 
   animation: ${fadeIn} 850ms cubic-bezier(0.14, 0.78, 0.36, 1);
@@ -90,7 +90,7 @@ const Backdrop = styled.div`
 
 const HamburgerMenu = styled(Dialog.Panel)`
   position: absolute;
-  background: ${COLORS.white};
+  background: var(--color-white);
   top: 0;
   right: 0;
   bottom: 0;
@@ -123,11 +123,11 @@ const NavLink = styled.a`
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
-  color: ${COLORS.gray[900]};
+  color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
 
   &:first-of-type {
-    color: ${COLORS.secondary};
+    color: var(--color-secondary);
   }
 `;
 
@@ -143,7 +143,7 @@ const FooterLink = styled.a`
   font-size: ${14 / 16}rem;
   font-weight: ${WEIGHTS.normal};
   text-decoration: none;
-  color: ${COLORS.gray[700]};
+  color: var(--color-gray-700);
 `;
 
 export default MobileMenu;
