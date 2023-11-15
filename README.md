@@ -118,3 +118,69 @@ const Something = styled.p`
 In this exercise, your goal is to update the project to use CSS variables for colors, and optionally font-weights.
 
 **BONUS:** The modal backdrop should use a CSS variable that is created using fragments from the main colors.
+
+## Note to self
+
+Look at the commits to see what was coded for each exercise.
+
+In general, a challenging set of exercises, where the main focus was on using **media queries** and understanding how to rejig the JSX to help allow for different layouts. Most challenging part was possibly incorporating an unstyled component to help create a **hamburger menu**.
+
+### Exercise 1: Setting up breakpoints
+
+Added the breakpoints in `constants.js`. Took a desktop-first approach. Used `rem` instead of `px`.
+
+Decided to use styled-component's `ThemeProvider` (see [API ref](https://styled-components.com/docs/api#themeprovider)) to help make the breakpoints available to every component (benefit is not having to import the theme object into every file).
+
+### Exercise 2: Making the header(s) responsive
+
+Created two different views for showing various things on the header. On desktop, we want a group of links, and on mobile devices a group of buttons. Strategy was to include both of these groups in the JSX, and then using media queries,switch between which one is being shown:
+
+```
+<DesktopNav>
+  <NavLink href='/sale'>Sale</NavLink>
+  ...
+</DesktopNav>
+
+<MobileActions>
+  <UnstyledButton>
+    <Icon id='shopping-bag' strokeWidth={2} />
+    <VisuallyHidden>Open cart</VisuallyHidden>
+  </UnstyledButton>
+  ...
+</MobileActions>
+```
+
+To incorporate a 'fluid' gap between the links/buttons, where the distance between them fluidly increases/decreases, `clamp()` was used on the `gap` property (see [fluid calculator](https://courses.joshwcomeau.com/css-for-js/05-responsive-css/16-fluid-calculator) and [`clamp`](https://developer.mozilla.org/en-US/docs/Web/CSS/clamp)).
+
+### Exercise 3
+
+This was where the bulk of the media queries and tweaking were done to match up with the Figma design.
+
+### Exercise 4
+
+Right, incorporating a hamburger menu using the `Dialog` component from Headless UI (see [Dialog (Modal)](https://headlessui.com/react/dialog#managing-initial-focus)).
+
+1. Install the package:
+
+   ```
+   npm install @headlessui/react
+   ```
+
+2. Add the import and copy in the basic example from the docs.
+
+3. How it works:
+
+   - The `Dialog` component is like your wrapper. So you want it to take up the entire viewport and be positionally fixed.
+   - The `Dialog.Panel` is the actual content/menu. There are optional elements you can use inside `Dialog.Panel` like `Dialog.Description` and `Dialog.Title`, although it seems like I needed the latter as otherwise it
+     [caused issues](https://github.com/tailwindlabs/headlessui/issues/2535).
+   - Clicking anywhere outside the panel closes the modal.
+   - Can add a backdrop before the panel by including a self-closing `div` that is absolutely positioned and has a `background` with an `alpha value`.
+   - I decided to also absolutely position the panel, but equally I could have used flex.
+
+4. Once you've incorporated the unstyled component, then it's just about adding styles to it. One note to make is that it is better to absolutely position the close button rather than make it part of the layout, and that it's a good idea to increase the padding for such buttons so that it has a good area that users can tap on with their finger.
+
+5. BONUS: adding some `animation`, using `keyframes`.
+
+### Exercise 5 and 6
+
+Used `overflow-x: auto` on the header, responsive `gap` between links/buttons using `clamp()`, incorporating CSS variables.
